@@ -1306,10 +1306,7 @@
 <footer>Aura Reading Guide — オーラ鑑定パーフェクトガイド</footer>
 
 <script>
-  // ---- ログインガード（未ログイン時はログイン画面へ） ----
-  if(sessionStorage.getItem('aura_guide_auth') !== 'ok'){
-    window.location.href = 'login.html';
-  }
+  // ---- ログインガードは一時停止中 ----
 
   // ---- タブ切り替え ----
   const tabButtons = document.querySelectorAll('.tab-btn');
