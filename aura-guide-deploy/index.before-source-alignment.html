@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Aura Reading Guide｜オーラ性格鑑定パーフェクトガイド</title>
+<style>
+  :root{
+    --bg:#f4f4f5;
+    --card:#ffffff;
+    --ink:#2b2b33;
+    --ink-soft:#6b6b76;
+    --purple:#6c5ce7;
+    --purple-soft:#efeafd;
+    --pink:#fdeef1;
+    --pink-ink:#c9497a;
+    --line:#e7e7ea;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .header{
+    text-align:center;
+    padding:28px 16px 18px;
+    background:var(--bg);
+    position:sticky;
+    top:0;
+    z-index:50;
+    border-bottom:1px solid var(--line);
+  }
+  .header h1{
+    font-size:1.05rem;
+    letter-spacing:0.18em;
+    font-weight:600;
+    margin:0 0 18px;
+    color:var(--ink);
+    font-family: "Times New Roman", "Hiragino Mincho ProN", serif;
+    text-transform:uppercase;
+  }
+  .tabs{
+    display:inline-flex;
+    gap:6px;
+    background:#e9e9ec;
+    padding:6px;
+    border-radius:999px;
+  }
+  .tab-btn{
+    border:none;
+    background:transparent;
+    padding:9px 18px;
+    border-radius:999px;
+    font-size:0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .tab-btn.active{
+    background:var(--purple);
+    color:#fff;
+    box-shadow:0 2px 8px rgba(108,92,231,.35);
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:32px 18px 80px;
+  }
+  .panel{display:none;}
+  .panel.active{display:block; animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:52px 28px 46px;
+    text-align:center;
+    margin-bottom:24px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
+    isolation:isolate;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 60% 55% at 18% 12%, rgba(214,196,255,0.55), rgba(214,196,255,0) 70%),
+      radial-gradient(ellipse 55% 50% at 82% 8%, rgba(255,209,224,0.50), rgba(255,209,224,0) 70%),
+      radial-gradient(ellipse 65% 60% at 88% 55%, rgba(186,214,255,0.42), rgba(186,214,255,0) 72%),
+      radial-gradient(ellipse 60% 55% at 8% 70%, rgba(255,231,196,0.40), rgba(255,231,196,0) 72%),
+      radial-gradient(ellipse 70% 65% at 50% 95%, rgba(200,235,220,0.35), rgba(200,235,220,0) 75%),
+      linear-gradient(180deg, #fdfcff 0%, #ffffff 100%);
+    filter:blur(18px) saturate(115%);
+    transform:scale(1.08);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(255,255,255,0) 60%);
+    mix-blend-mode:overlay;
+    opacity:.6;
+  }
+  .hero > *{
+    position:relative;
+    z-index:1;
+  }
+  .hero .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    color:#9d8ed6;
+    font-family: "Times New Roman", serif;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .hero h2{
+    font-size:1.7rem;
+    margin:0 0 10px;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .hero p{
+    color:var(--ink-soft);
+    font-size:0.92rem;
+    margin:0;
+  }
+
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    margin-bottom:20px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
+  }
+  .card h3{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:1.1rem;
+    margin:0 0 20px;
+    font-weight:700;
+  }
+  .card h4{
+    font-size:1rem;
+    font-weight:700;
+    margin:30px 0 14px;
+    color:var(--ink);
+    padding-top:6px;
+  }
+  .card p{
+    margin:0 0 20px;
+    font-size:0.95rem;
+    color:#3c3c44;
+    line-height:2.05;
+  }
+  .card p:last-child{margin-bottom:0;}
+
+  /* 重要語句の波線マーカー */
+  .mark{
+    font-weight:700;
+    background-image: linear-gradient(to top, rgba(255, 214, 102, 0.55) 3px, transparent 3px);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 1px;
+  }
+
+  .box-gray{
+    background:#f6f6f8;
+    border-radius:12px;
+    padding:20px 22px;
+    margin:22px 0;
+    border:1px solid #ececef;
+  }
+  .box-gray strong.title{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:12px;
+    font-size:0.94rem;
+    font-weight:700;
+    color:#333;
+  }
+  .box-gray ul{margin:0; padding-left:1.2em;}
+  .box-gray li{font-size:0.9rem; margin-bottom:9px; color:#45454e; line-height:1.8;}
+  .box-gray li:last-child{margin-bottom:0;}
+
+  .box-purple{
+    background:var(--purple-soft);
+    border-radius:12px;
+    padding:20px 22px;
+    margin:22px 0;
+    border:1.5px solid #cabcf5;
+    box-shadow:0 2px 8px rgba(108,92,231,.08);
+  }
+  .box-purple strong.title{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:12px;
+    font-size:0.94rem;
+    font-weight:700;
+    color:#5a45d1;
+  }
+  .box-purple p, .box-purple li{line-height:1.85;}
+
+  .pill{
+    display:inline-block;
+    background:var(--pink);
+    color:var(--pink-ink);
+    font-size:0.75rem;
+    font-weight:600;
+    padding:4px 12px;
+    border-radius:999px;
+    margin-right:8px;
+  }
+
+  .step-list{
+    counter-reset:step;
+    list-style:none;
+    padding:0;
+    margin:16px 0;
+  }
+  .step-list li{
+    counter-increment:step;
+    position:relative;
+    padding-left:38px;
+    margin-bottom:14px;
+    font-size:0.9rem;
+  }
+  .step-list li::before{
+    content:counter(step);
+    position:absolute;
+    left:0; top:0;
+    width:26px; height:26px;
+    background:var(--purple);
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.78rem;
+    font-weight:600;
+  }
+
+  .arrow-flow{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+    margin:8px 0;
+  }
+
+  .img-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:10px;
+    margin:16px 0;
+    clear:both;
+  }
+  .img-grid.single{grid-template-columns:minmax(0, 1fr);}
+  .img-grid img, .img-single img{
+    width:100%;
+    height:auto;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+    background:#eee;
+  }
+  .img-cap{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:6px;
+  }
+
+  .note{
+    font-size:0.83rem;
+    color:#6b6b76;
+    border-left:3px solid #d9d9de;
+    background:#fafafa;
+    padding:12px 14px;
+    border-radius:0 8px 8px 0;
+    margin:20px 0;
+    line-height:1.75;
+  }
+
+  .divider{
+    height:1px;
+    background:var(--line);
+    margin:26px 0;
+  }
+
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:14px 0;
+  }
+  .aura-tag{
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:0.82rem;
+    font-weight:600;
+    border:1px solid var(--line);
+    background:#fafafa;
+  }
+
+  /* ===== ワーク画面 ===== */
+  .mode-switch{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+    background:#e9e9ec;
+    padding:6px;
+    border-radius:999px;
+    width:fit-content;
+  }
+  .mode-btn{
+    border:none;
+    background:transparent;
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .mode-btn.active{
+    background:#fff;
+    color:var(--ink);
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+    font-weight:600;
+  }
+  .work-panel{display:none;}
+  .work-panel.active{display:block;}
+
+  .q-block{margin-bottom:22px;}
+  .q-label{
+    font-size:0.9rem;
+    font-weight:600;
+    margin-bottom:10px;
+    display:block;
+  }
+  .choice-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .choice-btn{
+    padding:9px 16px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fafafa;
+    font-size:0.85rem;
+    cursor:pointer;
+    transition:all .15s ease;
+    color:var(--ink);
+  }
+  .choice-btn:hover{border-color:var(--purple);}
+  .choice-btn.selected{
+    background:var(--purple);
+    color:#fff;
+    border-color:var(--purple);
+  }
+  textarea.free-input{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:0.88rem;
+    font-family:inherit;
+    resize:vertical;
+    min-height:80px;
+    background:#fcfcfd;
+  }
+  textarea.free-input:focus{outline:2px solid var(--purple-soft); border-color:var(--purple);}
+
+  .submit-btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    background:var(--purple);
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:0.95rem;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .submit-btn:active{transform:scale(.98);}
+
+  .result-card{
+    display:none;
+    background:var(--purple-soft);
+    border-radius:14px;
+    padding:24px 22px;
+    margin-top:20px;
+    border:1px solid #e1d9fb;
+  }
+  .result-card.show{display:block; animation:fade .4s ease;}
+  .result-card h4{
+    margin:0 0 12px;
+    color:#5a45d1;
+    font-size:1rem;
+  }
+  .result-card .result-color{
+    font-weight:700;
+    font-size:1.15rem;
+    margin-bottom:14px;
+    color:#3c3c44;
+  }
+  .result-card p{font-size:0.88rem; margin:0 0 10px; color:#3c3c44;}
+  .result-card .result-meta{
+    font-size:0.85rem;
+    color:#5a5a63;
+    background:#fff;
+    border-radius:8px;
+    padding:8px 12px;
+    margin-bottom:8px;
+  }
+  .reset-link{
+    display:inline-block;
+    margin-top:8px;
+    font-size:0.8rem;
+    color:var(--purple);
+    cursor:pointer;
+    text-decoration:underline;
+  }
+
+  .color-block{
+    background:#fff;
+    border-radius:12px;
+    padding:18px 18px;
+    margin:14px 0;
+    border:1px solid #ece6fb;
+  }
+  .color-block-title{
+    font-size:1rem;
+    font-weight:700;
+    color:#5a45d1;
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:1px solid #f0ecfb;
+  }
+  .ci-row{margin-bottom:12px;}
+  .ci-row:last-child{margin-bottom:0;}
+  .ci-label{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:700;
+    color:#7a6fd0;
+    background:#f4f1fd;
+    padding:2px 10px;
+    border-radius:6px;
+    margin-bottom:5px;
+  }
+  .ci-row p{
+    margin:0;
+    font-size:0.87rem;
+    color:#3c3c44;
+  }
+  .ci-advice{
+    background:#fdf7e8;
+    margin:14px -18px -18px;
+    padding:14px 18px;
+    border-radius:0 0 12px 12px;
+  }
+  .ci-advice .ci-label{
+    background:#f7e9bd;
+    color:#8a6a1f;
+  }
+
+  .gpt-box{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px dashed #d9cdf7;
+  }
+  .gpt-box .title{
+    display:block;
+    font-size:0.92rem;
+    color:#5a45d1;
+    margin-bottom:2px;
+  }
+  .gpt-btn-row{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+  }
+  .gpt-btn-row .submit-btn{
+    margin-top:0;
+    flex:1;
+    font-size:0.85rem;
+    padding:12px;
+    text-align:center;
+    text-decoration:none;
+  }
+  .gpt-copy{
+    background:#5a45d1;
+  }
+  .gpt-link{
+    background:#2b2b33;
+    display:block;
+  }
+
+  /* ===== オーラ一覧マスターテーブル ===== */
+  .print-btn-row{
+    margin:14px 0 18px;
+  }
+  .print-btn-row .submit-btn{
+    width:auto;
+    display:inline-block;
+    padding:11px 20px;
+    margin-top:0;
+  }
+  .aura-table-wrap{
+    overflow-x:auto;
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  table.aura-master-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.82rem;
+    min-width:640px;
+  }
+  table.aura-master-table thead th{
+    background:#f2f2f4;
+    color:#45454e;
+    font-weight:700;
+    padding:12px 14px;
+    text-align:left;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+  }
+  table.aura-master-table td{
+    padding:14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    line-height:1.7;
+    color:#3c3c44;
+  }
+  table.aura-master-table tr:last-child td{border-bottom:none;}
+  table.aura-master-table td.col-color{
+    white-space:nowrap;
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    min-width:150px;
+  }
+  table.aura-master-table .swatch{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+  table.aura-master-table .cname{
+    font-weight:700;
+    font-size:0.85rem;
+    line-height:1.5;
+  }
+  table.aura-master-table .cname-en{
+    font-weight:400;
+    font-size:0.68rem;
+    color:#9a9aa2;
+    letter-spacing:.04em;
+  }
+  table.aura-master-table .cname-stone{
+    font-weight:400;
+    font-size:0.7rem;
+    color:#9a9aa2;
+  }
+  th.col-plus, th.col-minus{width:32%;}
+
+  @media print{
+    /* まずタブの中身をすべて通常表示に戻す（.activeでなくても見えるように） */
+    .panel{display:block !important;}
+    .panel:not(#panel-list){display:none !important;}
+
+    /* 一覧表タブの中でも、印刷対象カード以外は非表示にする */
+    #panel-list > *{display:none !important;}
+    #panel-list > #print-area{display:block !important;}
+
+    body{background:#fff;}
+    .header{display:none !important;}
+    .no-print{display:none !important;}
+
+    #print-area{
+      box-shadow:none;
+      border-radius:0;
+      padding:0;
+      margin:0;
+    }
+    table.aura-master-table{font-size:11px; min-width:0;}
+    table.aura-master-table thead{display:table-header-group;}
+    table.aura-master-table tr{
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    table.aura-master-table td.col-color{
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 16px 50px;
+    color:#a3a3ab;
+    font-size:0.75rem;
+  }
+
+  @media (max-width:480px){
+    .img-grid{grid-template-columns:1fr;}
+    .card{padding:22px 18px;}
+    .hero{padding:36px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Aura Reading Guide</h1>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="explain">📖 解説</button>
+    <button class="tab-btn" data-tab="work">✍️ ワーク</button>
+    <button class="tab-btn" data-tab="list">🎨 オーラ一覧表</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TAB 1: 解説 ============ -->
+  <section class="panel active" id="panel-explain">
+
+    <div class="hero">
+      <div class="eyebrow">Aura Reading Guide</div>
+      <h2>オーラを視る方法<br>パーフェクトガイド</h2>
+      <p>占い初心者のための、オーラ性格鑑定はじめの一歩</p>
+    </div>
+
+    <div class="card">
+      <h3>☆ このガイドについて</h3>
+      <p>このガイドは、<span class="mark">見えたオーラの色から、その人の性格を鑑定できるようになること</span>を目的とした教材です。オーラとは、生命体や物体が発している色のついた「光のエネルギー」のことです。実際には、<span class="mark">第１〜７チャクラの活性度合いによって色が変わる</span>とされ、その人が発している周波数を映し出しているといわれています。</p>
+
+      <p>「視えるかどうか」は特別な才能の有無で決まるものではありません。<span class="mark">見えやすい環境づくりと、見えやすい体の部位を知り、正しい手順で練習を積み重ねること</span>で、多くの人が少しずつ視えるようになっていきます。このガイドでは、その手順を初心者にも分かるように一つずつ解説し、最後は「ワーク」で実際にオーラ性格鑑定ができるところまでご案内します。</p>
+
+      <div class="box-gray">
+        <strong class="title">💡 こんな方におすすめ</strong>
+        <ul>
+          <li>オーラという言葉は知っているが、実際にどう見ればいいか分からない</li>
+          <li>「見える人」と「見えない人」の違いが気になる</li>
+          <li>見えた色から、自分や相手の性格を鑑定できるようになりたい</li>
+          <li>まずは自分の指先や身近な人で試してみたい</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔷 オーラの見方・練習する時の５つのコツ</h3>
+      <p>オーラを見るには「見えやすい環境づくり」と「割と見やすい体の部位」を知っておく必要があります。まずは以下の5つのポイントを押さえておきましょう。</p>
+
+      <div class="box-purple">
+        <strong class="title">✨ オーラを見やすくする5つのポイント</strong>
+        <ul style="margin:0;padding-left:1.1em;">
+          <li>エネルギーワークを日々実践する</li>
+          <li>背景色は「白系」または「黒系」の単調色にする</li>
+          <li>見えやすい部位は「指先」または「肩から上の上半身」</li>
+          <li>対象物は<span class="mark">側面</span>を見る</li>
+          <li><span class="mark">軽く寄り目</span>にして、軽くぼやけるくらいで見る</li>
+        </ul>
+      </div>
+
+      <p>この後は、それぞれのポイントについて詳しく解説していきます。</p>
+    </div>
+
+    <div class="card">
+      <h3>① 背景色は黒か白</h3>
+      <p>オーラを見るときにまず気をつけたいのが、<span class="mark">「オーラが見えやすい環境であるかどうか」</span>です。</p>
+
+      <p>背景が雑多な色をしていると、それだけで<span class="mark">オーラは見えにくく</span>なります。<span class="mark">黒や白など単調な色を背景にする</span>のがおすすめです。家の中であれば、壁や襖・障子などを背景にすると見やすくなります。</p>
+
+      <div class="img-grid single">
+        <img src="images/finger-black-white-bg.jpg" alt="黒背景・白背景それぞれで見た指先のオーラの見え方" loading="lazy" decoding="async" width="341" height="238" style="aspect-ratio:341/238;object-fit:contain;background:#fff;">
+      </div>
+      <p class="img-cap">黒背景・白背景、どちらでも指先の縁に薄い光の膜のようなものが見えているのが分かります</p>
+
+      <div class="box-purple">
+        <strong class="title">✨ ポイント：黒背景と白背景の違い</strong>
+        <p style="margin:0;">上の写真のように、<span class="mark">黒背景では光って見えやすく</span>、<span class="mark">白背景ではやや控えめに、輪郭がにじむように</span>見える傾向があります。どちらが見やすいかは人によって異なるので、<span class="mark">両方試して自分に合う方を見つける</span>ことが大切です。</p>
+      </div>
+
+      <div class="box-gray">
+        <strong class="title">💡 補足：背景の選び方に迷ったら</strong>
+        <ul>
+          <li><strong>黒い方が見やすい人</strong>、<strong>白い方が見やすい人</strong>がいて、これは個人差があります</li>
+          <li>まずは<strong>黒背景</strong>で試し、見えにくければ<strong>白背景</strong>に変えてみましょう</li>
+          <li>慣れてくると背景を選ばなくても見えるようになる人もいます</li>
+        </ul>
+      </div>
+
+      <p class="note">※オーラの見過ぎは脳が疲れやすくなる場合があります。練習は短時間から始め、無理をしないようにしましょう。</p>
+    </div>
+
+    <div class="card">
+      <h3>② 見えやすい体の部位</h3>
+      <p>オーラには「見えやすい部位」があります。ここでは、相手がいなくても<span class="mark">一人で練習できる「自分の指先」を使った練習方法</span>をご紹介します。</p>
+
+      <h4>オーラを見る時は指先の「縁」を見る</h4>
+      <p>オーラは体の<strong>縁（輪郭）</strong>に現れるため、<span class="mark">指全体ではなく指の縁を見るように意識する</span>のがコツです。指全体を直視すると、かえってオーラは見えにくくなります。</p>
+
+      <div class="box-purple">
+        <strong class="title">⚠️ 重要：軽く寄り目、指が軽くぼやけるくらいで見る</strong>
+        <p style="margin:0;">指先の縁を<strong>ジッと凝視するのではなく</strong>、<span class="mark">焦点を合わせずに軽く寄り目をして、ボーッと見る</span>ような感覚で見つめてください。すると、指が若干二重に見えるようになります。<span class="mark">この状態をそのままキープ</span>しましょう。</p>
+      </div>
+
+      <div class="box-gray">
+        <strong class="title">💡 補足：具体的なやり方の手順</strong>
+        <ul>
+          <li>白か黒の背景（壁・布・厚紙など）の前に<strong>片手を出す</strong></li>
+          <li>指先を見つめながら、<strong>指先よりも10〜20cmほど手前（自分の目に近い側）</strong>に視線の焦点を置くイメージで、軽く寄り目にする</li>
+          <li>指の輪郭が<strong>ぼんやり二重に見えてきたら</strong>、そのまま数十秒〜数分キープする</li>
+          <li>まばたきをしても構わないので、焦らずリラックスして続ける</li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:0.82rem;color:var(--ink-soft);">※「寄り目」は本来、近くのものを見るときの目の動きです。指先の<strong>奥（向こう側）</strong>に焦点を合わせようとすると寄り目にならず、逆に視線が開いてしまうので注意してください。</p>
+      </div>
+
+      <p>はじめは何も見えないかもしれませんが、繰り返すうちに<span class="mark">白いオーラ</span>が見えるようになっていきます。見慣れていくと、この「寄り目にする」という過程を踏まなくても自然に見えるようになる人もいます。</p>
+    </div>
+
+    <div class="card">
+      <h3>③ オーラの見えはじめと見慣れた時の違い</h3>
+      <p>オーラの見え方には段階があります。練習量に応じてどのように変化していくのかを知っておくと、上達の目安になります。</p>
+
+      <h4>見えはじめ：白い縁取り・白い湯気</h4>
+      <p>オーラが見え始めたばかりの頃は、<span class="mark">「半透明の白い縁取り」</span>か<span class="mark">「半透明の白い湯気」</span>のどちらかのように見えることが多いです。どちらのタイプで見えるかは個人差があります。（①でご紹介した指先の写真が、まさにこの「白い縁取り」の状態です）</p>
+
+      <p>この<span class="mark">白い縁取りや白い湯気がオーラの原型</span>になります。これらを何度も見ているうちに、少しずつ色が付いて見えるようになっていきます。</p>
+
+      <div class="divider"></div>
+
+      <h4>見慣れた後：色が重なって見える</h4>
+      <p>色が見えるようになり、さらに練習を重ねると、オーラが大きくなり、<span class="mark">色も一種類ではなく数種類が重なって見える</span>ようになります。</p>
+
+      <div class="img-grid single">
+        <img src="https://re-life123.site/wp-content/uploads/2022/06/777b0e0685712afd767e158286e90c36.png" alt="複数の色が重なって見えるオーラ" loading="lazy" decoding="async">
+      </div>
+      <p>オーラは横に広がっているのではなく、<span class="mark">縦長の卵のような形</span>をしています。上に行くにつれてだんだん細くなっていくのが一般的なイメージです。</p>
+
+      <div class="img-grid single" style="margin-top:20px;">
+        <img src="https://re-life123.site/wp-content/uploads/2022/06/391564be71b74ac9cec2edae37747a58.png" alt="練習を重ねて見えるようになった大きなオーラ" loading="lazy" decoding="async">
+      </div>
+      <p class="img-cap">エネルギーワークを続けることで、次第に大きなオーラが見えるようになった例</p>
+    </div>
+
+    <div class="card">
+      <h3>④ どのくらいでオーラが見えるようになる？</h3>
+      <p>見える早さには個人差があります。<span class="mark">エネルギーワークでチャクラクリーニングを毎日行っている人ほど、見えるのが早い</span>傾向にあるといわれています。早い人は数分で白い縁や湯気が見え始めますが、何度試しても見えにくい人もいます。</p>
+
+      <div class="box-gray">
+        <strong class="title">💡 補足：上達を早めるための心がけ</strong>
+        <ul>
+          <li>一度に長時間頑張るより、短時間でも毎日続ける方が定着しやすい</li>
+          <li>見えない日があっても焦らず、コンディションを整えて再挑戦する</li>
+          <li>一度見えるようになっても、練習にブランクがあると再び集中力が必要になることがある</li>
+          <li>常に見える状態を保ちたい場合は、日常的に「見る癖」をつけておくとよい</li>
+        </ul>
+      </div>
+      <p>経験的に、<strong>呼吸法（瞑想）を伴うエネルギーワークを実践すると自然と身についていく</strong>といわれています。焦らず、ゆっくりと練習を積み重ねていきましょう。</p>
+    </div>
+
+    <div class="card">
+      <h3>⑤ オーラの色でわかる健康・感情</h3>
+      <p>オーラの色からは、その人の健康状態や感情の状態が読み取れるといわれています。</p>
+      <div class="box-purple">
+        <strong class="title">健康なオーラ／不調なオーラの傾向</strong>
+        <ul style="margin:0;padding-left:1.1em;">
+          <li><strong>健康な人</strong>：赤や黄色など、明るく綺麗な色のオーラ</li>
+          <li><strong>元気のない人</strong>：グレーにくすんだオーラ</li>
+          <li><strong>怒っている時</strong>：透明感のない、ドス黒い赤色のオーラ</li>
+          <li><strong>正義感に燃えている時</strong>：燃え盛る炎のような赤色のオーラ</li>
+          <li><strong>人が死に接している時</strong>：黒色のオーラ</li>
+        </ul>
+      </div>
+      <p>オーラの色は深紅色、赤色、オレンジ、黄色、緑色、青色、紫色、白色、黒色、黄金色など<strong>人によってさまざま</strong>で、見え方にも個人差があります。それぞれの色が持つ性格傾向は「オーラ一覧表」タブに詳しくまとめていますので、まずは色の傾向を知識として押さえておき、実際に見えた色と照らし合わせていくとよいでしょう。</p>
+
+      <div class="box-gray" style="margin-top:18px;">
+        <strong class="title">💡 補足：色ごとの性格一覧について</strong>
+        <p style="margin:0 0 14px;">色ごとの性格の詳しい一覧（プラス面・マイナス面）は、<strong>「オーラ一覧表」タブ</strong>に一つにまとめています。印刷して鑑定時にご利用いただけます。資料に頼りすぎず、<strong>想念をキャッチして性格を掴むこと</strong>も忘れないようにしましょう。</p>
+        <button class="submit-btn" style="width:auto;display:inline-block;padding:11px 22px;margin-top:0;" onclick="goToTab('list')">🎨 オーラ一覧表を見る</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⑥ そもそもオーラとは？</h3>
+      <p>人間は<strong>肉体・霊体・エーテル体</strong>と呼ばれる幽体から成り立っているとされ、この<strong>エーテル体のことを「オーラ」</strong>と呼びます。オーラを見ることで、その人の<strong>心境・感情・健康面</strong>などを読み取ることができるといわれています。</p>
+      <p>オーラは人を囲み、頭部から上に離れるにつれて細くなる、卵のような形をしています。オーラには大きく分けて<strong>2つの種類</strong>があります。</p>
+
+      <div class="box-purple">
+        <strong class="title">1. 基軸オーラ</strong>
+        <p style="margin:0;">その人の<strong>ベースとなる感情や性格的な特徴</strong>を表すオーラです。その人のメインとなるチャクラに影響を受けます。ベースとなる色は、<strong>環境の大きな変化や病気などがない限り、基本的には変わらない</strong>傾向にあります。</p>
+      </div>
+
+      <div class="box-purple">
+        <strong class="title">2. 基軸オーラを覆うオーラ（幽体のオーラ）</strong>
+        <p style="margin:0;"><strong>現在の一時的な健康状態や精神状態</strong>を表すオーラです。体の前後左右、さまざまな場所から出ており、<strong>暖色系の色ならおおむね健康、寒色系やくすんだ色は疲れ・不調のサイン</strong>とされています。</p>
+      </div>
+
+      <div class="box-gray">
+        <strong class="title">鑑定時の注意点</strong>
+        <p style="margin:0;">基軸オーラを見ずに、<strong>基軸オーラを覆うオーラだけでその人を判断しない</strong>ようにしましょう。一時的な状態と、その人本来のベースを混同しないことが大切です。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>【上級編】オーラ構造と心のカラダ</h3>
+      <p>ここからは、もう少しオーラについて深掘りしたい方向けの内容です。俗にいうオーラ（心のカラダ）は、<strong>上位構造が下位構造をコントロールする</strong>という関係になっています。</p>
+      <p>私たちの肉体には、次の7つのエネルギー体が重なっているとされています。</p>
+      <div class="box-purple">
+        <strong class="title">7つのエネルギー体</strong>
+        <p style="margin:0;">エーテル体／アストラル体／メンタル体／コーザル体／ブッディ体／アートマ体／モナド体</p>
+      </div>
+      <p>肉体を合わせると、合計8つの多重構造・多次元構造でできているとされます。肉体からモナド体に向かうにつれて次元が高くなり、<strong>上位構造が下位構造をすべて包み込んでいる</strong>構造になっています。</p>
+      <p>洋服を重ね着しているイメージではなく、エーテル体は肉体の部分も含めて存在し、アストラル体はエーテル体と肉体の部分も含めて存在する、というように<strong>内側の構造を包含しながら重なっている</strong>イメージです。そして、<strong>メンタル体はアストラル体を、アストラル体はエーテル体を、エーテル体は肉体をコントロールする</strong>というように、上位構造が下位構造に影響を与えているとされます。</p>
+      <p>ここでは、実践的に理解しておきたい「肉体〜メンタル体」までを見ていきましょう。</p>
+
+      <div class="img-grid">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-22.jpg" alt="多重構造のイメージ図" loading="lazy" decoding="async">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-01.jpg" alt="肉体・エーテル体・アストラル体・メンタル体の構造図" loading="lazy" decoding="async">
+      </div>
+      <p class="img-cap">肉体を中心に、エーテル体・アストラル体・メンタル体が内側を包み込むように重なっている構造イメージ</p>
+
+      <div class="divider"></div>
+
+      <h4>肉体</h4>
+      <p>物質として存在する体のことで、普段私たちが認識している体そのものです。肉体がある次元を「物理次元」と呼びます。</p>
+      <div class="img-grid single">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-10.jpg" alt="肉体のイメージ図" loading="lazy" decoding="async">
+      </div>
+
+      <h4>エーテル体（＝オーラ）</h4>
+      <p><strong>エーテル体はオーラと呼ばれる「ココロの体」</strong>のことです。エーテル体がある次元を「エーテル次元」と呼びます。肉体から<strong>30cmほどの厚み</strong>で、熱を発しながら蒸気のように流れているとされます。</p>
+      <div class="box-gray">
+        <strong class="title">補足：エーテル体を実感しやすい例</strong>
+        <ul>
+          <li>子どもの頃は冬でも薄着で平気だったが、大人になって厚着が必要になった</li>
+          <li>若い頃は裸足で平気だったが、今は靴下がないと冷える</li>
+          <li>歳を重ねるごとに体が冷えやすくなってきた</li>
+        </ul>
+      </div>
+      <p>エーテル体は<strong>生命エネルギー</strong>そのものです。若いうちは生命エネルギーに満ちているため体温が高く、歳を重ねると生命エネルギーが少なくなるにつれて体温も下がっていくといわれています。</p>
+      <div class="img-grid">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-11.jpg" alt="エーテル体のイメージ図" loading="lazy" decoding="async">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-01.jpg" alt="エーテル体と肉体の関係図1" loading="lazy" decoding="async">
+      </div>
+      <div class="img-grid single">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-02.jpg" alt="エーテル体と肉体の関係図2" loading="lazy" decoding="async">
+      </div>
+      <p><strong>波動（エネルギーワーク）を行うと、肉体の上位構造にあるエーテル体が活性化し、結果として肉体にも良い影響が及ぶ</strong>とされています。「ご飯は食べなくても波動はやりなさい」といわれることがあるのは、エーテル体の方が肉体より上位構造にあり、エーテル体が整うことで下位構造である肉体にも良い影響が及ぶためだと考えられています。</p>
+
+      <h4>アストラル体</h4>
+      <p>アストラル体は<strong>「心の体」</strong>で、アストラル体がある次元を「アストラル次元」と呼びます。<strong>感情やイメージ</strong>によって形成されており、ポジティブな感情・イメージは心をきれいにし、下位構造であるエーテル体・肉体も活性化させますが、<strong>ネガティブな感情・イメージは心を汚し、下位構造も乱れて病気につながる</strong>とされます。</p>
+      <div class="img-grid single">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-12.jpg" alt="アストラル体のイメージ図" loading="lazy" decoding="async">
+      </div>
+      <div class="box-gray">
+        <strong class="title">補足：アストラル体を実感しやすい例</strong>
+        <ul>
+          <li>失恋してご飯がのどを通らない</li>
+          <li>大きなショックを受けて食欲がない</li>
+          <li>緊張して食事がのどを通らない</li>
+        </ul>
+      </div>
+
+      <div class="box-purple">
+        <strong class="title">補足：感情と五行の関係</strong>
+        <p>感情によって生じる不調は、<strong>「五行」</strong>の考え方でも説明されます。五行とは、万物は<strong>木・火・土・金・水</strong>の5つの要素からできており、互いに影響し合っているという古代中国の思想です。お互いを助け合う関係を「相生」、お互いを打ち滅ぼす関係を「相克（そうこく）」と呼びます。</p>
+        <ul style="margin:10px 0 0;padding-left:1.1em;">
+          <li><strong>怒ってばかりいる</strong> → 肝（肝臓など）が悪くなりやすい</li>
+          <li><strong>イライラしてばかりいる</strong> → 心（心包）や小腸（三焦）の不調につながりやすい</li>
+          <li><strong>考えすぎて思い煩う</strong> → 脾や胃の不調につながりやすい</li>
+          <li><strong>悲しみの感情が強い</strong> → 肺や大腸の不調につながりやすい</li>
+          <li><strong>恐れおののいてばかりいる</strong> → 腎や膀胱の不調につながりやすい</li>
+        </ul>
+      </div>
+      <div class="img-grid">
+        <img src="https://pentacles1.com/wp-content/uploads/2019/09/gogyo.jpg" alt="五行の関係図" loading="lazy" decoding="async">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-03.jpg" alt="アストラル体とエーテル体と肉体の関係図1" loading="lazy" decoding="async">
+      </div>
+      <div class="img-grid single">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-04.jpg" alt="アストラル体とエーテル体と肉体の関係図2" loading="lazy" decoding="async">
+      </div>
+
+      <p>アストラル体は、人間が死んだ後に<strong>幽体</strong>となる部分でもあります。死後、肉体とアストラル体をつないでいたエーテル体が剥がれ、アストラル体が幽体として肉体から離れるとされ、この幽体が<strong>輪廻転生の際に来世のアストラル体になる</strong>といわれています。今回の人生でアストラル体が汚れたまま死ぬと、来世もその汚れを背負って生まれることになるとされるため、<strong>普段からポジティブな感情やイメージを持ち、アストラル体をきれいに保つこと</strong>が大切だといわれています。</p>
+
+      <h4>メンタル体</h4>
+      <p>メンタル体は<strong>「魂の体」</strong>で、メンタル体がある次元を「メンタル次元」と呼びます。<strong>やる気や意志の次元</strong>にあたり、言葉や思考によって形成されています。ポジティブな言葉・思考は魂を輝かせ、下位構造も活性化させますが、<strong>ネガティブな言葉・思考は魂を汚し、下位構造も乱れて病気につながる</strong>とされます。</p>
+      <div class="img-grid single">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200926-13.jpg" alt="メンタル体のイメージ図" loading="lazy" decoding="async">
+      </div>
+      <div class="note">声に出す・出さないに関わらず、心の中で考えている言葉も同じように影響するといわれています。「声に出していないから大丈夫」ではない点に注意しましょう。</div>
+      <div class="box-gray">
+        <strong class="title">補足：メンタル体を実感しやすい例</strong>
+        <ul>
+          <li>好きな人ができてやる気があるとご飯を食べなくても元気</li>
+          <li>仕事に一生懸命でご飯を食べなくても頑張れる</li>
+          <li>勉強のやる気があると、ご飯を食べなくても平気</li>
+        </ul>
+      </div>
+      <div class="img-grid">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-05.jpg" alt="メンタル体とアストラル体とエーテル体と肉体の関係図1" loading="lazy" decoding="async">
+        <img src="https://pentacles1.com/wp-content/uploads/2020/09/20200928-06.jpg" alt="メンタル体とアストラル体とエーテル体と肉体の関係図2" loading="lazy" decoding="async">
+      </div>
+      <p>メンタル体には、<strong>過去の辛い経験やトラウマが映る</strong>ことがあるとされ（場合によってはアストラル体に映ることもあります）、これを放置すると<strong>来世にも影響が及ぶ</strong>といわれています。日々の中で、少しずつエネルギーワークを行い、整えていくことが大切です。</p>
+    </div>
+
+    <div class="card">
+      <h3>🧭 実践の進め方まとめ</h3>
+      <p>ここまでの内容を、実際に練習する際の手順としてまとめます。</p>
+      <ol class="step-list">
+        <li>白または黒の単調な背景を用意する（壁・布・厚紙など）</li>
+        <li>片手を背景の前に出し、指先の「縁」に視線を向ける</li>
+        <li>焦点を合わせず、軽く寄り目にしてボーッと見る</li>
+        <li>指が少し二重に見える状態のまま、無理のない範囲でキープする</li>
+        <li>白い縁取りや白い湯気が見えたら、そのまま観察を続ける</li>
+        <li>見えた部位・色・変化を、忘れないうちにワークシートに記録する</li>
+      </ol>
+      <div class="box-purple">
+        <strong class="title">練習を続ける上での心得</strong>
+        <ul style="margin:0;padding-left:1.1em;">
+          <li>「見える／見えない」を評価にせず、出てきたものをそのまま記録する</li>
+          <li>体調が悪い日や疲れが強い日は無理をしない</li>
+          <li>短時間でもよいので、日々コツコツ続けることを優先する</li>
+          <li>見えた内容を人に伝えるときは、断定せず「〜のように感じます」と伝える</li>
+        </ul>
+      </div>
+      <p>練習の記録は、次の「ワーク」タブから、選択式・入力式のどちらかで記入できます。</p>
+    </div>
+
+  </section>
+
+  <!-- ============ TAB 2: ワーク ============ -->
+  <section class="panel" id="panel-work">
+
+    <div class="hero">
+      <div class="eyebrow">Aura Personality Reading</div>
+      <h2>オーラ性格鑑定ワーク</h2>
+      <p>見えたオーラの色から、性格を鑑定してみましょう</p>
+    </div>
+
+    <div class="card">
+      <h3>✍️ ワークシート：オーラ性格鑑定</h3>
+      <p>実際にオーラを見た（見ようとした）あとの気づきを入力すると、その色が示す<strong>長所・短所・顕在意識・中層意識・潜在意識</strong>までを踏まえた性格鑑定結果が表示されます。<strong>「選択式」</strong>はタップだけで簡単に、<strong>「入力式」</strong>は自分の言葉で自由に記録したい方向けです。どちらで記録しても構いません。</p>
+
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="select">選択式</button>
+        <button class="mode-btn" data-mode="free">入力式</button>
+      </div>
+
+      <!-- 選択式 -->
+      <div class="work-panel active" id="mode-select">
+
+        <div class="q-block">
+          <span class="q-label">見えた部位は？</span>
+          <div class="choice-grid" data-group="part">
+            <button class="choice-btn" data-value="指先">指先</button>
+            <button class="choice-btn" data-value="肩から上">肩から上</button>
+            <button class="choice-btn" data-value="全体">全体を囲むように</button>
+            <button class="choice-btn" data-value="その他">その他・分からない</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <span class="q-label">見えた色は？（複数選択可）</span>
+          <div class="choice-grid" data-group="color" data-multi="true">
+            <button class="choice-btn" data-value="深紅色">深紅色</button>
+            <button class="choice-btn" data-value="赤色">赤色</button>
+            <button class="choice-btn" data-value="オレンジ">オレンジ</button>
+            <button class="choice-btn" data-value="オレンジイエロー">オレンジイエロー</button>
+            <button class="choice-btn" data-value="黄色">黄色</button>
+            <button class="choice-btn" data-value="緑色">緑色</button>
+            <button class="choice-btn" data-value="深緑色">深緑色</button>
+            <button class="choice-btn" data-value="青色">青色</button>
+            <button class="choice-btn" data-value="藍色">藍色</button>
+            <button class="choice-btn" data-value="紫色">紫色</button>
+            <button class="choice-btn" data-value="ラベンダー">ラベンダー</button>
+            <button class="choice-btn" data-value="白色">白色</button>
+            <button class="choice-btn" data-value="黒色">黒色</button>
+            <button class="choice-btn" data-value="黄金色">黄金色</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <span class="q-label">濃さ・透明感は？</span>
+          <div class="choice-grid" data-group="clarity">
+            <button class="choice-btn" data-value="はっきり明るい">はっきり明るい</button>
+            <button class="choice-btn" data-value="やや薄い・淡い">やや薄い・淡い</button>
+            <button class="choice-btn" data-value="くすんでいる・濁っている">くすんでいる・濁っている</button>
+            <button class="choice-btn" data-value="分からない">分からない</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <span class="q-label">大きさ・形の変化はあったか？</span>
+          <div class="choice-grid" data-group="change">
+            <button class="choice-btn" data-value="途中で大きくなった">途中で大きくなった</button>
+            <button class="choice-btn" data-value="途中で小さくなった">途中で小さくなった</button>
+            <button class="choice-btn" data-value="ほとんど変化なし">ほとんど変化なし</button>
+            <button class="choice-btn" data-value="分からない">分からない</button>
+          </div>
+        </div>
+
+        <button class="submit-btn" onclick="showResult('select')">この内容で鑑定する</button>
+      </div>
+
+      <!-- 入力式 -->
+      <div class="work-panel" id="mode-free">
+
+        <div class="q-block">
+          <span class="q-label">見えた部位・色・様子を、感じたままに書いてください</span>
+          <textarea class="free-input" id="free-part" placeholder="例）指先の縁がぼんやり白く見えて、少ししてから薄い黄色が混ざって見えた気がする"></textarea>
+        </div>
+
+        <div class="q-block">
+          <span class="q-label">大きさ・形・濃淡に変化はあったか？</span>
+          <textarea class="free-input" id="free-change" placeholder="例）最初は小さかったが、見続けているうちに少し広がって見えた"></textarea>
+        </div>
+
+        <div class="q-block">
+          <span class="q-label">うまく視えなかった場合、何が邪魔をしていたと感じるか（任意）</span>
+          <textarea class="free-input" id="free-block" placeholder="例）考え事をしていて集中できなかった／部屋が明るすぎた　など"></textarea>
+        </div>
+
+        <button class="submit-btn" onclick="showResult('free')">この内容で鑑定する</button>
+      </div>
+
+      <div class="result-card" id="result-card">
+        <h4>オーラ性格鑑定結果</h4>
+        <div class="result-color" id="result-color-name"></div>
+        <div id="result-body"></div>
+        <span class="reset-link" onclick="resetWork()">記録をやり直す</span>
+
+        <div class="gpt-box">
+          <strong class="title">さらに詳しく鑑定したい場合</strong>
+          <p style="margin:6px 0 12px;font-size:0.85rem;color:var(--ink-soft);">下のテキストには、今回の内容をもとにした<strong>ChatGPT用の鑑定プロンプト</strong>が自動で作成されています。コピーしてChatGPTに貼り付けるだけで、より詳しいオーラ性格鑑定文を作成してもらえます。</p>
+          <textarea class="free-input" id="chatgpt-prompt" rows="10" readonly style="font-size:0.8rem;background:#fafafa;"></textarea>
+          <div class="gpt-btn-row">
+            <button class="submit-btn gpt-copy" id="copy-btn" onclick="copyPrompt()">プロンプトをコピー</button>
+            <a class="submit-btn gpt-link" href="https://chat.openai.com/" target="_blank" rel="noopener">ChatGPTを開く</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h3>📌 鑑定するときのポイント</h3>
+      <div class="box-gray">
+        <ul style="margin:0;">
+          <li>「当たっているか」ではなく、<strong>見えたものをそのまま記録すること</strong>を優先しましょう</li>
+          <li>色が混ざって見えた場合は、無理に一つに絞らず、感じたままを残してください</li>
+          <li>鑑定結果は<strong>「必ずそうだ」と決めつけず</strong>、あくまで傾向の一つとして受け取りましょう</li>
+          <li>人に鑑定結果を伝えるときは、断定せず「〜の傾向があるようです」とやわらかく伝えるようにしましょう</li>
+          <li>練習前後は軽く深呼吸をし、終わったら「ここまで」と区切りをつけましょう</li>
+          <li>体調が優れない日は、無理に練習をしないようにしてください</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ TAB 3: オーラ一覧表 ============ -->
+  <section class="panel" id="panel-list">
+
+    <div class="hero">
+      <div class="eyebrow">Aura Color Reference</div>
+      <h2>オーラ色 一覧表</h2>
+      <p>見えた色から、性格の傾向を確認してみましょう</p>
+    </div>
+
+    <div class="card" id="print-area">
+      <h3>🎨 オーラ別性格 一覧表</h3>
+      <p>この一覧表は、<strong>オーラ性格鑑定の基礎となるマスターデータ</strong>です。「ワーク」タブの鑑定結果も、この表のプラス面・マイナス面をもとに作成しています。色が持つ意味は流派によって解釈の幅がありますが、<strong>この教材内での鑑定は、すべてこの一覧表を基準にしています。</strong></p>
+
+      <div class="print-btn-row no-print">
+        <button class="submit-btn" onclick="window.print()">🖨️ この一覧表を印刷する</button>
+      </div>
+
+      <div class="aura-table-wrap">
+        <table class="aura-master-table">
+          <thead>
+            <tr>
+              <th class="col-color">色（石）</th>
+              <th class="col-plus">プラス</th>
+              <th class="col-minus">マイナス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#4a0404;"></span><div class="cname">深紅色<br><span class="cname-en">DEEP RED</span><br><span class="cname-stone">オニキス・水晶・アクアマリン</span></div></td>
+              <td>情に厚く正義感が強い　現実主義、サバイバル志向　生命力にあふれている</td>
+              <td>エゴイスト、支配的　物質的欲求に囚われる　サバイバルのみにしか必要がない</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#ef1c1c;"></span><div class="cname">赤色<br><span class="cname-en">RED</span><br><span class="cname-stone">メテオライト・タイガーアイ・ルチルクォーツ</span></div></td>
+              <td>エネルギッシュで活動的　パワフル、活動的　物事を成し遂げる力がある</td>
+              <td>短気、自制心がない、攻撃的　頑固、負けず嫌い　勝利主義　体だけが満たされればいい</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#f5871f;"></span><div class="cname">オレンジ<br><span class="cname-en">ORANGE</span><br><span class="cname-stone">タイガーアイ・シトリン・アメジスト</span></div></td>
+              <td>チャレンジ精神　華やかでカリスマ性がある　ポジティブ、挑戦的</td>
+              <td>計算高く、協調性に欠ける　失敗に対する恐怖心　突破を敢行する、支配的</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#f7b500;"></span><div class="cname">オレンジイエロー<br><span class="cname-en">ORANGE YELLOW</span><br><span class="cname-stone">アンバー・パイライト・ルチルクォーツ</span></div></td>
+              <td>知的、華やかで、論理的分析的、細かい、安全主義　正直、信頼・確実性</td>
+              <td>深い混乱、深い恐怖、理屈っぽい、見栄を張る　詳細にこだわり過ぎる　安全主義、完璧主義</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#ffe600;"></span><div class="cname">黄色<br><span class="cname-en">YELLOW</span><br><span class="cname-stone">ターコイズ・ラブラドライト・チャロアイト</span></div></td>
+              <td>頭脳明晰、ユーモアがある　楽しい事が好き、陽気、身軽　面白味がある、マイペース</td>
+              <td>神経質、臆病、寂しがり屋　わがまま、世間知らずな気軽さ　自己中心的、ピーターパン症候群</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#4a9e6e;"></span><div class="cname">緑色<br><span class="cname-en">GREEN</span><br><span class="cname-stone">ラリマー・ガーデンクォーツ・ロードクロサイト</span></div></td>
+              <td>安心感、協調性がある　調和、社会的、交際上手　バランス感覚に優れる</td>
+              <td>自分を表現できない、感情抑制　優柔不断、平凡過ぎてしまう　八方美人</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#0f6b2c;"></span><div class="cname">深緑色<br><span class="cname-en">DEEP GREEN</span><br><span class="cname-stone">ガーネット・黒ルチル・ラピスラズリ</span></div></td>
+              <td>目標意識が高い、頭脳明晰　フェミニンリーダーシップ　責任感があり、まとめ役に向く</td>
+              <td>ずる賢い、人や物を選びがち　野心家、贅沢主義　物質主義で計算高い</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#1e8fe0;"></span><div class="cname">青色<br><span class="cname-en">BLUE</span><br><span class="cname-stone">アパタイト・クンツァイト・ローズクォーツ</span></div></td>
+              <td>冷静沈着で客観性がある　冷静な判断力・愛情を持つ　養育・養成に向く</td>
+              <td>冷ややか、コミュニケーション不全　自由を欲する、世話を焼きすぎる</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#2b1a6b;"></span><div class="cname">藍色<br><span class="cname-en">INDIGO</span><br><span class="cname-stone">フローライト・シェードペリドット</span></div></td>
+              <td>縁の下の力持ち、芸術的　落ち着きがあり深い愛情を持つ　客観性がある、洞察力がある</td>
+              <td>厳格、孤独、感受性が強い　引きこもり、内向的　社交性に欠けてくる</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#7b3fb0;"></span><div class="cname">紫色<br><span class="cname-en">VIOLET</span><br><span class="cname-stone">アマゾナイト・カルサイト・アクアオーラ</span></div></td>
+              <td>感受性、美意識が高い　情熱が増す、芸術的、直感的　革新的、カリスマ性</td>
+              <td>現実を直視しない、自虐的　情緒不安定、理想主義　神秘的、周囲との交わりが少ない</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#c9a8e0;"></span><div class="cname">ラベンダー<br><span class="cname-en">LAVENDER</span><br><span class="cname-stone">スギライト・ロードナイト・アベンチュリン</span></div></td>
+              <td>想像性豊か、神秘的、繊細　ファンタジック　人あたりが柔らかい</td>
+              <td>社会適応能力に欠ける　情緒不安定、非現実的　脆い、繊細過ぎる、奇妙、奇抜</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#ffffff;border:1px solid #ccc;"></span><div class="cname">白色<br><span class="cname-en">WHITE</span><br><span class="cname-stone">水晶・フローライト・ムーンストーン</span></div></td>
+              <td>純粋、素直、清らか、清純　全てのプラス部分を含む　どんなカラーにも合わせることができる　卓越した精神性を持つ</td>
+              <td>相手の影響を受けやすい、嘘がつけない　全てのマイナス部分を含む　他のカラーに染まりやすいため自分を見失ってしまうことがある</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#111111;"></span><div class="cname">黒色<br><span class="cname-en">BLACK</span><br><span class="cname-stone">オニキス・ブラックトルマリン・オブシディアン</span></div></td>
+              <td>威厳がある、格式高い、強い意志　自己管理能力が高い　洗練された、プロフェッショナル</td>
+              <td>閉鎖的、威圧的、近寄りたい否定的、重い　暗い印象、感情を抑圧する　孤立しやすい</td>
+            </tr>
+            <tr>
+              <td class="col-color"><span class="swatch" style="background:#f2d024;"></span><div class="cname">黄金色<br><span class="cname-en">GOLD</span><br><span class="cname-stone">ゴールドルチル・パイライト・タイガーアイ</span></div></td>
+              <td>成功意欲が強い、富、繁栄の象徴　高貴で価値が高い、豊かさ、自信に満ち、輝かしい</td>
+              <td>物質主義、強欲、傲慢、見栄っ張り、派手好き、表面的、成金主義</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="img-cap no-print" style="margin-top:16px;">元資料の画像版はこちら（保存・印刷用）</p>
+      <div class="img-grid single no-print">
+        <img src="images/aura-color-master-table.jpg" alt="オーラ別性格の一覧表（元資料）" loading="lazy" decoding="async" width="1100" height="1551" style="aspect-ratio:1100/1551;object-fit:contain;background:#fff;">
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧩 基軸オーラ／覆うオーラの見分け方</h3>
+      <div class="box-purple">
+        <strong class="title">基軸オーラ</strong>
+        <p style="margin:0;">その人本来の<strong>ベースとなる性格・感情</strong>を表す色。環境の大きな変化や病気などがない限り、基本的には変わりにくい色です。</p>
+      </div>
+      <div class="box-gray">
+        <strong class="title">基軸オーラを覆うオーラ（幽体のオーラ）</strong>
+        <p style="margin:0;"><strong>一時的な健康状態・精神状態</strong>を表す色。暖色系ならおおむね健康、寒色系やくすんだ色は疲れ・不調のサインとされます。</p>
+      </div>
+      <p class="note">鑑定の際は、この2つを混同しないよう注意しましょう。一時的に見えたグレーやくすみだけで、その人の本質を判断しないことが大切です。</p>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>Aura Reading Guide — オーラ鑑定パーフェクトガイド</footer>
+
+<script>
+  // ---- ログインガード（未ログイン時はログイン画面へ） ----
+  if(sessionStorage.getItem('aura_guide_auth') !== 'ok'){
+    window.location.href = 'login.html';
+  }
+
+  // ---- タブ切り替え ----
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+
+  function goToTab(tabName){
+    tabButtons.forEach(b=>b.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+    if(targetBtn) targetBtn.classList.add('active');
+    const targetPanel = document.getElementById('panel-' + tabName);
+    if(targetPanel) targetPanel.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  tabButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      goToTab(btn.dataset.tab);
+    });
+  });
+
+  // ---- ワーク：選択式/入力式 切り替え ----
+  const modeButtons = document.querySelectorAll('.mode-btn');
+  const workPanels = document.querySelectorAll('.work-panel');
+  modeButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      modeButtons.forEach(b=>b.classList.remove('active'));
+      workPanels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('mode-' + btn.dataset.mode).classList.add('active');
+      document.getElementById('result-card').classList.remove('show');
+    });
+  });
+
+  // ---- 選択式ボタンのトグル ----
+  document.querySelectorAll('#mode-select .choice-grid').forEach(group=>{
+    const multi = group.dataset.multi === 'true';
+    group.querySelectorAll('.choice-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if(!multi){
+          group.querySelectorAll('.choice-btn').forEach(b=>b.classList.remove('selected'));
+        }
+        btn.classList.toggle('selected');
+      });
+    });
+  });
+
+  // ---- 色ごとの性格鑑定データ（オーラ一覧表マスターデータに基づく） ----
+  const colorInfo = {
+    "深紅色": {
+      label:"深紅色のオーラ",
+      strength:"情に厚く正義感が強い性格で、現実を見据えたサバイバル志向を持っています。生命力にあふれ、困難な状況でも生き抜く力強さがあります。",
+      weakness:"エゴイストで支配的になりやすく、物質的な欲求に囚われてしまう面があります。自分が生き残ることばかりに意識が向き、周囲への配慮が後回しになることもあります。",
+      conscious:"顕在意識では、現実的に物事を捉え、生き抜くための手段を常に考えている状態が強く出ています。",
+      middle:"中層意識には、生存への強い執着や、失うことへの恐れが渦巻いており、それが支配的な態度として表に出ることがあります。",
+      subconscious:"潜在意識の奥には、根源的な不安や、何かを守らなければという強い衝動が根付いていることがあります。",
+      advice:"生き抜く力の強さは大きな長所です。その力を自分だけのためでなく、周囲と分かち合う方向に使うことを意識すると、人間関係がより豊かになります。"
+    },
+    "赤色": {
+      label:"赤色のオーラ",
+      strength:"エネルギッシュで活動的、パワフルに物事を成し遂げる力を持っています。行動力があり、目の前の目標に向かって力強く進んでいけます。",
+      weakness:"短気で自制心がなく、攻撃的になりやすい面があります。頑固で負けず嫌いな勝利主義が先に立ち、体だけ、結果だけが満たされればいいという考えに偏ることもあります。",
+      conscious:"顕在意識では、結果を出したい、勝ちたいという思いが強く出ています。",
+      middle:"中層意識には、負けることへの強い抵抗感や、認められたいという焦りが潜んでいます。",
+      subconscious:"潜在意識の奥には、力で物事を解決してきた経験や、弱さを見せられなかった過去が影響していることがあります。",
+      advice:"怒りが湧いたときほど一呼吸置く習慣をつけると、持ち前の行動力がより良い形で活きてきます。勝ち負けだけでなく、過程やプロセスにも目を向けてみましょう。"
+    },
+    "オレンジ": {
+      label:"オレンジのオーラ",
+      strength:"チャレンジ精神にあふれ、華やかでカリスマ性があります。ポジティブで挑戦的な姿勢を持ち、新しいことに臆せず飛び込んでいけます。",
+      weakness:"計算高くなりやすく、協調性に欠けることがあります。失敗に対する恐怖心を突破するために、時に支配的な態度をとってしまうこともあります。",
+      conscious:"顕在意識では、常に新しい挑戦を求め、周囲を引っ張っていきたいという気持ちが強く出ています。",
+      middle:"中層意識には、失敗への強い恐れが潜んでおり、それを覆い隠すために華やかに振る舞っている面があります。",
+      subconscious:"潜在意識の奥には、注目を浴びたい、特別な存在でありたいという願望が根付いています。",
+      advice:"挑戦する姿勢はそのままに、周囲と協力する視点を持つことで、成果がより長続きするものになります。"
+    },
+    "オレンジイエロー": {
+      label:"オレンジイエローのオーラ",
+      strength:"知的で華やか、論理的な分析力があります。細かい部分にまで気を配れる安全主義者で、正直さと信頼性を大切にしています。",
+      weakness:"深い混乱や恐怖を抱えやすく、理屈っぽくなったり見栄を張ったりする面があります。詳細にこだわり過ぎる完璧主義が、自分自身を追い詰めてしまうこともあります。",
+      conscious:"顕在意識では、正確さや安全性を重視し、間違いを避けたいという気持ちが強く出ています。",
+      middle:"中層意識には、深い混乱や恐怖が潜んでおり、それを整理しようと論理的に考えすぎてしまう面があります。",
+      subconscious:"潜在意識の奥には、失敗を恐れる強い気持ちや、信頼を失うことへの不安が根付いています。",
+      advice:"完璧を求めすぎず、時には大まかな進め方も受け入れてみましょう。細かさは長所ですが、力を抜く場面を持つことで心の余裕が生まれます。"
+    },
+    "黄色": {
+      label:"黄色のオーラ",
+      strength:"頭脳明晰でユーモアがあり、楽しいことが好きな陽気な性格です。身軽でマイペース、独特の面白味で周囲を惹きつける力があります。",
+      weakness:"神経質で臆病、寂しがり屋な一面があります。わがままで世間知らずな気軽さが出やすく、自己中心的になったり、現実から目を逸らすピーターパン症候群のような傾向も見られます。",
+      conscious:"顕在意識では、楽しいこと、新しいことに常にアンテナを張っていて、退屈な状況を避けようとする気持ちが強く出ています。",
+      middle:"中層意識には、実は先の見えないことへの漠然とした不安があり、それを明るく振る舞うことで打ち消そうとしている面があります。",
+      subconscious:"潜在意識の奥には、注目されたい、面白い人だと思われたいという願望が根付いていることがあり、それが持ち前の明るさの源になっています。",
+      advice:"思いつきを形にする前に、一度立ち止まって計画を書き出す習慣を持つと、才能が長続きする成果につながりやすくなります。楽しさと同時に、地道な積み重ねの価値にも目を向けてみましょう。"
+    },
+    "緑色": {
+      label:"緑色のオーラ",
+      strength:"安心感があり、協調性に優れています。調和を大切にし、社会的で交際上手、バランス感覚に優れた性質があります。",
+      weakness:"自分を表現できず、感情を抑制してしまう面があります。優柔不断で、周囲に合わせすぎるあまり平凡になりすぎたり、八方美人と見られてしまうこともあります。",
+      conscious:"顕在意識では、その場の調和を保ちたい、誰も傷つけたくないという気持ちが強く出ています。",
+      middle:"中層意識には、対立や衝突への強い苦手意識があり、それを避けるために自分を抑え込むパターンが染みついています。",
+      subconscious:"潜在意識の奥には、誰かの役に立つことで自分の存在価値を確かめたいという思いが根付いていることがあります。",
+      advice:"人を癒す前に、自分自身を労わる時間を意識的に作りましょう。「ノー」と言うことは相手を傷つけることではなく、健全な関係を保つために必要なことだと捉え直してみてください。"
+    },
+    "深緑色": {
+      label:"深緑色のオーラ",
+      strength:"目標意識が高く、頭脳明晰でフェミニンなリーダーシップを発揮します。責任感があり、まとめ役として力を発揮するタイプです。",
+      weakness:"ずる賢く立ち回ってしまうことがあり、人や物を選びがちな面があります。野心家で贅沢主義、物質主義に偏り、計算高くなりすぎることもあります。",
+      conscious:"顕在意識では、目標を達成したい、周囲をまとめて成果を出したいという気持ちが強く出ています。",
+      middle:"中層意識には、上に立ちたい、認められたいという野心と、それを維持するための計算高さが潜んでいます。",
+      subconscious:"潜在意識の奥には、価値のある存在として認められたいという強い欲求が根付いています。",
+      advice:"リーダーシップを発揮する場面で、損得だけでなく、周囲の気持ちに寄り添う視点を持つと、より信頼される存在になれます。"
+    },
+    "青色": {
+      label:"青色のオーラ",
+      strength:"冷静沈着で客観性があり、冷静な判断力と愛情を持ち合わせています。養育や養成に向いた、面倒見の良い性質です。",
+      weakness:"冷ややかに見られやすく、コミュニケーション不全に陥りやすい面があります。自由を欲しがる一方で、世話を焼きすぎてしまう傾向も見られます。",
+      conscious:"顕在意識では、間違えたくない、きちんとやりたいという慎重さが強く表れています。物事を筋道立てて考えるのが得意です。",
+      middle:"中層意識には、失敗への恐れや、人からどう評価されるかへの敏感さが潜んでいて、それが慎重すぎる行動につながっています。",
+      subconscious:"潜在意識の奥には、幼少期に安心できる環境を強く求めていた経験があることが多く、その名残として、今も安定や秩序を強く求める傾向が残っています。",
+      advice:"完璧を求めすぎず、七割の準備で動き出す練習をしてみましょう。信頼できる相手には、素直に弱さや悩みを打ち明けることで、孤独感が和らぎ、周囲との距離も縮まっていきます。"
+    },
+    "藍色": {
+      label:"藍色のオーラ",
+      strength:"縁の下の力持ちとして芸術的な感性を持ち、落ち着きがあり深い愛情を持っています。客観性と洞察力に優れた性質です。",
+      weakness:"厳格で孤独を感じやすく、感受性が強い分、引きこもりがちになる面があります。内向的で社交性に欠けてくることもあります。",
+      conscious:"顕在意識では、表舞台よりも裏方として支えることに価値を感じ、静かに物事を見極めたいという気持ちが強く出ています。",
+      middle:"中層意識には、人と深く関わることへの慎重さや、孤独への慣れが潜んでいます。",
+      subconscious:"潜在意識の奥には、深く傷つくことを避けたいという防衛本能が根付いていることがあります。",
+      advice:"洞察力を活かしつつ、信頼できる相手には少しずつ心を開いていくことで、孤立感が和らぎ、深い愛情がより豊かに育まれます。"
+    },
+    "紫色": {
+      label:"紫色のオーラ",
+      strength:"感受性と美意識が高く、情熱にあふれています。芸術的で直感的、革新的な発想力とカリスマ性を持ち合わせています。",
+      weakness:"現実を直視しない面があり、自虐的になったり情緒不安定になったりすることがあります。理想主義で神秘的な傾向が強く、周囲との交わりが少なくなることもあります。",
+      conscious:"顕在意識では、独自の美意識や理想を大切にし、人とは違う視点で物事を捉えたいという気持ちが強く出ています。",
+      middle:"中層意識には、理想と現実のギャップへの葛藤や、情緒の波が潜んでいます。",
+      subconscious:"潜在意識の奥には、特別な存在として自分を表現したいという強い欲求が根付いています。",
+      advice:"理想の高さは大きな才能です。現実的な一歩を積み重ねることを意識すると、その才能がより多くの人に届く形になっていきます。"
+    },
+    "ラベンダー": {
+      label:"ラベンダーのオーラ",
+      strength:"想像性が豊かで神秘的、繊細でファンタジックな感性を持っています。人あたりが柔らかく、優しい雰囲気で周囲を包み込みます。",
+      weakness:"社会適応能力に欠ける面があり、情緒不安定で非現実的になりやすいことがあります。脆く繊細過ぎて、周囲から奇妙、奇抜と見られてしまうこともあります。",
+      conscious:"顕在意識では、繊細な感性を大切にし、傷つくことを避けたいという気持ちが強く出ています。",
+      middle:"中層意識には、現実の厳しさへの戸惑いや、自分の感性を理解してもらえるかという不安が潜んでいます。",
+      subconscious:"潜在意識の奥には、安心できる優しい世界にいたいという強い願いが根付いています。",
+      advice:"繊細さは豊かな感性の証です。無理に周囲に合わせようとせず、自分の感性を理解してくれる環境を少しずつ見つけていきましょう。"
+    },
+    "白色": {
+      label:"白色のオーラ",
+      strength:"純粋で素直、清らかで清純な性質を持っています。すべてのプラス面を併せ持ち、どんなカラーにも合わせられる柔軟性と、卓越した精神性があります。",
+      weakness:"相手の影響を受けやすく、嘘がつけない正直さが弱さにもなります。すべてのマイナス面も併せ持ちやすく、他のカラーに染まりやすいため、自分自身を見失ってしまうことがあります。",
+      conscious:"顕在意識では、誰に対しても素直でありたい、周囲と調和したいという気持ちが強く出ています。",
+      middle:"中層意識には、自分らしさをどう保つかという揺らぎや、周囲に染まりやすい柔らかさが潜んでいます。",
+      subconscious:"潜在意識の奥には、純粋なままでいたい、誰も傷つけたくないという強い願いが根付いています。",
+      advice:"柔軟性は大きな長所ですが、自分の軸を持つことも大切です。周囲に流される前に、自分自身の気持ちを確認する時間を意識的に持ちましょう。"
+    },
+    "黒色": {
+      label:"黒色のオーラ",
+      strength:"威厳があり格式高く、強い意志と高い自己管理能力を持っています。洗練された、プロフェッショナルな性質です。",
+      weakness:"閉鎖的で威圧的になりやすく、近寄りがたい、否定的で重い、暗い印象を与えてしまうことがあります。感情を抑圧しすぎて、孤立しやすい面もあります。",
+      conscious:"顕在意識では、隙を見せたくない、きちんとした自分でありたいという意志の強さが表れています。",
+      middle:"中層意識には、弱さを見せることへの強い抵抗感や、感情を表に出さない習慣が潜んでいます。",
+      subconscious:"潜在意識の奥には、自分を守るために感情を封じ込めてきた経験が根付いていることがあります。",
+      advice:"強い意志と自己管理能力は大きな長所です。信頼できる相手には、少しずつ感情や本音を見せる練習をすることで、孤立感が和らいでいきます。"
+    },
+    "黄金色": {
+      label:"黄金色のオーラ",
+      strength:"成功意欲が強く、富や繁栄の象徴となる高貴さと価値の高さを持っています。豊かさと自信に満ち、輝かしい存在感があります。",
+      weakness:"物質主義に偏りやすく、強欲で傲慢、見栄っ張りになる面があります。派手好きで表面的になりやすく、成金主義的な考えに寄ってしまうこともあります。",
+      conscious:"顕在意識では、成功したい、豊かでありたいという強い意欲が表れています。",
+      middle:"中層意識には、人より優れていたい、価値ある存在として見られたいという欲求が潜んでいます。",
+      subconscious:"潜在意識の奥には、満たされなかった時期の記憶や、豊かさへの強い渇望が根付いていることがあります。",
+      advice:"成功への意欲は大きな原動力です。物質的な豊かさだけでなく、内面の豊かさにも目を向けることで、より満たされた輝きが得られます。"
+    }
+  };
+
+  function getSelected(group){
+    return Array.from(document.querySelectorAll(`.choice-grid[data-group="${group}"] .choice-btn.selected`)).map(b=>b.dataset.value);
+  }
+
+  function buildColorSection(colorName){
+    const d = colorInfo[colorName];
+    if(!d) return "";
+    return `
+      <div class="color-block">
+        <div class="color-block-title">${d.label}</div>
+        <div class="ci-row"><span class="ci-label">長所</span><p>${d.strength}</p></div>
+        <div class="ci-row"><span class="ci-label">短所・注意したい点</span><p>${d.weakness}</p></div>
+        <div class="ci-row"><span class="ci-label">顕在意識（自分で気づいている部分）</span><p>${d.conscious}</p></div>
+        <div class="ci-row"><span class="ci-label">中層意識（感情・こだわりの層）</span><p>${d.middle}</p></div>
+        <div class="ci-row"><span class="ci-label">潜在意識（奥底にある心の動き）</span><p>${d.subconscious}</p></div>
+        <div class="ci-row ci-advice"><span class="ci-label">アドバイス</span><p>${d.advice}</p></div>
+      </div>`;
+  }
+
+  function showResult(mode){
+    const card = document.getElementById('result-card');
+    const nameEl = document.getElementById('result-color-name');
+    const bodyEl = document.getElementById('result-body');
+    const promptBox = document.getElementById('chatgpt-prompt');
+
+    let selectedColors = [];
+    let summaryForPrompt = "";
+
+    if(mode === 'select'){
+      const parts = getSelected('part');
+      const colors = getSelected('color');
+      const clarity = getSelected('clarity');
+      const change = getSelected('change');
+
+      if(colors.length === 0 && parts.length === 0){
+        nameEl.textContent = "選択されていません";
+        bodyEl.innerHTML = "<p>少なくとも「見えた部位」または「見えた色」のどちらかを選んでから、もう一度お試しください。</p>";
+        promptBox.value = "";
+        card.classList.add('show');
+        card.scrollIntoView({behavior:'smooth', block:'nearest'});
+        return;
+      }
+
+      selectedColors = colors.length ? colors : ["白色"];
+      nameEl.textContent = "オーラ性格鑑定：" + selectedColors.map(c => colorInfo[c] ? colorInfo[c].label : c).join(" × ");
+
+      let html = "";
+      if(parts.length) html += `<p class="result-meta">見えた部位：${parts.join("、")}</p>`;
+      selectedColors.forEach(c=>{ html += buildColorSection(c); });
+
+      let extra = "";
+      if(clarity.includes("くすんでいる・濁っている")){
+        extra += "今回、色が濁って見えたとのことですので、心身が疲れているサインの可能性があります。無理をせず、休息を優先してください。";
+      } else if(clarity.includes("はっきり明るい")){
+        extra += "今回、はっきりと明るく見えたとのことですので、エネルギーが充実している状態と考えられます。";
+      }
+      if(change.includes("途中で大きくなった")){
+        extra += " 見ている間に大きくなったのは、集中力が深まっている良いサインです。";
+      }
+      if(extra){
+        html += `<div class="box-gray" style="margin-top:14px;"><strong class="title">今回の見え方について</strong><p style="margin:0;">${extra}</p></div>`;
+      }
+      bodyEl.innerHTML = html;
+
+      summaryForPrompt = `見えた部位：${parts.join("、") || "未選択"}\n見えた色：${selectedColors.join("、")}\n濃さ・透明感：${clarity.join("、") || "未選択"}\n大きさ・形の変化：${change.join("、") || "未選択"}`;
+
+    } else {
+      const part = document.getElementById('free-part').value.trim();
+      const change = document.getElementById('free-change').value.trim();
+      const block = document.getElementById('free-block').value.trim();
+
+      if(!part){
+        nameEl.textContent = "内容が未入力です";
+        bodyEl.innerHTML = "<p>「見えた部位・色・様子」の欄に、感じたことを書いてから鑑定してください。</p>";
+        promptBox.value = "";
+        card.classList.add('show');
+        card.scrollIntoView({behavior:'smooth', block:'nearest'});
+        return;
+      }
+
+      // 自由記述から色キーワードを検出（正式名と略称の両方に対応）
+      const colorAliases = {
+        "深紅色":["深紅","ディープレッド","dark red"],
+        "赤色":["赤"],
+        "オレンジ":["オレンジ色","橙"],
+        "オレンジイエロー":["オレンジイエロー","山吹色"],
+        "黄色":["黄"],
+        "緑色":["緑"],
+        "深緑色":["深緑","濃い緑"],
+        "青色":["青"],
+        "藍色":["藍","インディゴ"],
+        "紫色":["紫"],
+        "ラベンダー":["薄紫","うすむらさき"],
+        "白色":["白","白い縁","白い湯気"],
+        "黒色":["黒"],
+        "黄金色":["金色","ゴールド","黄金"]
+      };
+      const detected = Object.keys(colorInfo).filter(c => {
+        if(part.includes(c)) return true;
+        const aliases = colorAliases[c] || [];
+        return aliases.some(a => part.includes(a));
+      });
+      selectedColors = detected.length ? detected : [];
+
+      nameEl.textContent = "あなたの記録からのオーラ性格鑑定";
+      let html = `<p class="result-meta">見えた様子：${part}</p>`;
+      if(change) html += `<p class="result-meta">変化について：${change}</p>`;
+      if(block) html += `<p class="result-meta">気になった点：${block}</p>`;
+
+      if(selectedColors.length){
+        selectedColors.forEach(c=>{ html += buildColorSection(c); });
+      } else {
+        html += `<div class="box-gray" style="margin-top:14px;"><p style="margin:0;">記述の中から色のキーワードを見つけられませんでした。より詳しい鑑定をご希望の場合は、下のChatGPT用プロンプトをコピーしてご利用ください。</p></div>`;
+      }
+      bodyEl.innerHTML = html;
+
+      summaryForPrompt = `見えた部位・色・様子：${part}\n変化について：${change || "特になし"}\n気になった点：${block || "特になし"}`;
+    }
+
+    promptBox.value =
+`あなたはオーラ鑑定の専門家です。以下の「オーラ色一覧表（深紅色・赤色・オレンジ・オレンジイエロー・黄色・緑色・深緑色・青色・藍色・紫色・ラベンダー・白色・黒色・黄金色の、それぞれのプラス面／マイナス面の分類）」を基礎知識として、見えたオーラの情報をもとに、その人の性格を詳しく鑑定してください。
+
+【見えたオーラの情報】
+${summaryForPrompt}
+
+【鑑定してほしい項目】
+1. 長所（強み、得意なこと）
+2. 短所やネガティブになりやすい点（弱み、注意したいクセ）
+3. 顕在意識（本人が自覚している考えや価値観）
+4. 中層意識（感情、こだわり、無意識に出やすい反応）
+5. 潜在意識（奥底にある欲求や、幼少期からの影響と考えられる部分）
+6. 上記を踏まえたアドバイス（今の生活や人間関係にどう活かすか、意識するとよい行動）
+
+文章を書くときは、多くの人が「まさに自分のことだ」と感じられるような、誰にでも当てはまりやすい表現も上手に取り入れてみてください。長所も短所もバランスよく含めながら、読んだ人が自分ごととして受け止められるような、親しみのある文章を意識してください。
+
+断定的な決めつけではなく、「〜の傾向があります」「〜と考えられます」というやわらかい表現を使い、読んだ人が前向きな気持ちになれるように仕上げてください。
+
+全体の文字数は、日本語で1000文字程度を目安にまとめてください。`;
+
+    card.classList.add('show');
+    card.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function copyPrompt(){
+    const box = document.getElementById('chatgpt-prompt');
+    box.select();
+    box.setSelectionRange(0, 999999);
+    navigator.clipboard.writeText(box.value).then(()=>{
+      const btn = document.getElementById('copy-btn');
+      const original = btn.textContent;
+      btn.textContent = "コピーしました";
+      setTimeout(()=>{ btn.textContent = original; }, 1800);
+    }).catch(()=>{
+      document.execCommand('copy');
+    });
+  }
+
+  function resetWork(){
+    document.querySelectorAll('.choice-btn.selected').forEach(b=>b.classList.remove('selected'));
+    document.querySelectorAll('.free-input').forEach(t=>t.value='');
+    document.getElementById('result-card').classList.remove('show');
+  }
+</script>
+
+</body>
+</html>

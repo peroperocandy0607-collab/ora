@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Aura Reading Guide｜ログイン</title>
+<script>window.location.replace('index.html');</script>
+<style>
+  :root{
+    --bg:#f4f4f5;
+    --card:#ffffff;
+    --ink:#2b2b33;
+    --ink-soft:#6b6b76;
+    --purple:#6c5ce7;
+    --purple-soft:#efeafd;
+    --pink:#fdeef1;
+    --pink-ink:#c9497a;
+    --line:#e7e7ea;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 60% 55% at 18% 12%, rgba(214,196,255,0.45), rgba(214,196,255,0) 70%),
+      radial-gradient(ellipse 55% 50% at 82% 8%, rgba(255,209,224,0.40), rgba(255,209,224,0) 70%),
+      radial-gradient(ellipse 65% 60% at 88% 60%, rgba(186,214,255,0.35), rgba(186,214,255,0) 72%),
+      radial-gradient(ellipse 60% 55% at 8% 78%, rgba(255,231,196,0.32), rgba(255,231,196,0) 72%),
+      radial-gradient(ellipse 70% 65% at 50% 100%, rgba(200,235,220,0.28), rgba(200,235,220,0) 75%);
+    filter:blur(30px) saturate(115%);
+  }
+
+  .login-card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:380px;
+    background:var(--card);
+    border-radius:20px;
+    padding:44px 36px 38px;
+    box-shadow:0 8px 32px rgba(80,60,150,.10), 0 1px 3px rgba(0,0,0,.04);
+    text-align:center;
+  }
+
+  .brand-icon{
+    width:56px;
+    height:56px;
+    margin:0 auto 20px;
+  }
+  .brand-icon svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.28em;
+    color:#9d8ed6;
+    font-family: "Times New Roman", serif;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+
+  h1{
+    font-size:1.25rem;
+    font-weight:700;
+    margin:0 0 6px;
+    letter-spacing:.02em;
+  }
+
+  .sub{
+    color:var(--ink-soft);
+    font-size:0.85rem;
+    margin:0 0 32px;
+  }
+
+  .field{
+    text-align:left;
+    margin-bottom:8px;
+  }
+
+  .field label{
+    display:block;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+
+  .pw-wrap{
+    position:relative;
+  }
+
+  input[type="password"], input[type="text"]{
+    width:100%;
+    padding:13px 44px 13px 16px;
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    font-size:0.95rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+    background:#fcfcfd;
+    color:var(--ink);
+    letter-spacing:0.05em;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  input[type="password"]:focus, input[type="text"]:focus{
+    outline:none;
+    border-color:var(--purple);
+    box-shadow:0 0 0 3px var(--purple-soft);
+  }
+
+  .toggle-eye{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:1rem;
+    color:var(--ink-soft);
+    padding:4px;
+    line-height:1;
+  }
+
+  .error-msg{
+    color:var(--pink-ink);
+    font-size:0.78rem;
+    text-align:left;
+    min-height:18px;
+    margin:8px 2px 0;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .error-msg.show{opacity:1;}
+
+  .login-btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    background:var(--purple);
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:0.95rem;
+    font-weight:600;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+    cursor:pointer;
+    margin-top:22px;
+    letter-spacing:.05em;
+    transition:transform .15s ease, box-shadow .2s ease;
+    box-shadow:0 4px 14px rgba(108,92,231,.28);
+  }
+  .login-btn:active{transform:scale(.98);}
+  .login-btn.shake{animation:shake .4s ease;}
+
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-6px);}
+    40%{transform:translateX(6px);}
+    60%{transform:translateX(-4px);}
+    80%{transform:translateX(4px);}
+  }
+
+  .footnote{
+    margin-top:26px;
+    font-size:0.72rem;
+    color:#b3b3ba;
+    letter-spacing:.04em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="brand-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="auraGrad" cx="50%" cy="42%" r="60%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="45%" stop-color="#cabcf5"/>
+            <stop offset="100%" stop-color="#f5c9dd"/>
+          </radialGradient>
+          <linearGradient id="figureGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#6c5ce7"/>
+            <stop offset="100%" stop-color="#9d8ed6"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="50" cy="48" rx="46" ry="46" fill="url(#auraGrad)" opacity="0.9"/>
+        <ellipse cx="50" cy="48" rx="34" ry="38" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.55"/>
+        <circle cx="50" cy="34" r="11" fill="url(#figureGrad)"/>
+        <path d="M 30 78 C 30 58 70 58 70 78 L 70 82 C 70 84 68 85 66 85 L 34 85 C 32 85 30 84 30 82 Z" fill="url(#figureGrad)"/>
+      </svg>
+    </div>
+    <div class="eyebrow">Aura Reading Guide</div>
+    <h1>オーラ性格鑑定ガイド</h1>
+    <p class="sub">パスワードを入力してご入室ください</p>
+
+    <form id="login-form" autocomplete="off">
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="password" name="password" placeholder="パスワードを入力" autocomplete="off">
+          <button type="button" class="toggle-eye" id="toggle-eye" aria-label="パスワードの表示切り替え">👁</button>
+        </div>
+      </div>
+      <div class="error-msg" id="error-msg">パスワードが正しくありません</div>
+      <button type="submit" class="login-btn" id="login-btn">入室する</button>
+    </form>
+
+    <div class="footnote">Aura Reading Guide</div>
+  </div>
+
+<script>
+  const CORRECT_PASSWORD = "oraperfect4932";
+  const form = document.getElementById('login-form');
+  const input = document.getElementById('password');
+  const errorMsg = document.getElementById('error-msg');
+  const loginBtn = document.getElementById('login-btn');
+  const toggleEye = document.getElementById('toggle-eye');
+
+  toggleEye.addEventListener('click', ()=>{
+    if(input.type === 'password'){
+      input.type = 'text';
+      toggleEye.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      toggleEye.textContent = '👁';
+    }
+  });
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const value = input.value.trim();
+    if(value === CORRECT_PASSWORD){
+      sessionStorage.setItem('aura_guide_auth', 'ok');
+      window.location.href = 'index.html';
+    } else {
+      errorMsg.classList.add('show');
+      loginBtn.classList.add('shake');
+      input.focus();
+      input.select();
+      setTimeout(()=>{ loginBtn.classList.remove('shake'); }, 400);
+    }
+  });
+
+  input.addEventListener('input', ()=>{
+    errorMsg.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
